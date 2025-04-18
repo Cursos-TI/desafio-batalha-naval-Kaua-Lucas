@@ -3,13 +3,81 @@
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
+char linhaHorizontal = 'A';
+int linhaVertical = 1;
+
+void letras(){
+
+    int i;
+
+    printf("   ");//basicamente o tab pra dar um espaço inicial nas letras
+
+    for(i = 1; i<=10; i++){
+
+        printf("%c ", linhaHorizontal);
+        linhaHorizontal++; //Aqui ira incrementar as letras pra A,B,C...
+
+    }
+    printf("\n");
+}
 
 int main() {
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
+    
+    int tabuleiro[10][10], x = 0 , y = 0;
+    
+    
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
+    
+    letras(); 
+
+
+    for(y = 0 ; y < 10 ; y++)
+    {
+        //adiciona uma coluna de numeros para orientar no tabuleiro
+        if(linhaVertical <= 9){
+
+            printf(" %d ", linhaVertical);
+
+        }else{
+
+            printf("%d ", linhaVertical);//pra organizar o numero 10 pra nã deixar o tabuleiro torto
+
+        }
+        
+        //tabuleiro em si
+        for(x = 0 ; x < 10 ; x++)
+        {
+
+            tabuleiro[x][y] = 0;
+
+            if((x >= 2 && x <= 4 ) && y < 1){//posição do primeiro navio
+
+                tabuleiro[x][y] = 3;
+
+            }else if((y >= 2 && y <= 4 ) && x < 5){//posição do segundo navio
+
+                if(x < 4){
+
+                    tabuleiro[x][y] = 0;
+
+                }else{
+
+                    tabuleiro[x][y] = 3;
+
+                }
+                
+            }
+            printf("%d ", tabuleiro[x][y]);
+
+        }
+        printf("\n");
+        linhaVertical++;
+    }
+    
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
