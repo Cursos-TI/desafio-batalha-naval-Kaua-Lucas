@@ -3,6 +3,7 @@
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
+
 char linhaHorizontal = 'A';
 int linhaVertical = 1;
 
@@ -10,14 +11,15 @@ void letras(){
 
     int i;
 
-    printf("   ");//basicamente o tab pra dar um espaço inicial nas letras
+    printf("  ");//basicamente o tab pra dar um espaço inicial para as letras
 
-    for(i = 1; i<=10; i++){
+    for(i = 1; i <= 5; i++){
 
         printf("%c ", linhaHorizontal);
         linhaHorizontal++; //Aqui ira incrementar as letras pra A,B,C...
 
     }
+    linhaHorizontal = 'A';
     printf("\n");
 }
 
@@ -25,55 +27,29 @@ int main() {
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     
-    int tabuleiro[10][10], x = 0 , y = 0;
+    int tabuleiro[5][5] = {0}, x = 0 , y = 0, navio = 0;
     
-    
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    // Coordenadas dos dois navios (um horizontal e um vertical)
+    int positionPequenoX[10] = {2,3,4   ,0,0,0};
+    int positionPequenoY[10] = {0,0,0   ,0,1,2};
 
-    
-    letras(); 
-
-
-    for(y = 0 ; y < 10 ; y++)
+    // Posicionamento dos navios no tabuleiro pequeno
+    for(int i = 0 ; i <=9; i++)
     {
-        //adiciona uma coluna de numeros para orientar no tabuleiro
-        if(linhaVertical <= 9){
+        tabuleiro[positionPequenoX[i]][positionPequenoY[i]] = 3;
+    }
+    
+    letras();
 
-            printf(" %d ", linhaVertical);
+    for(y = 0 ; y <= 4 ; y++)
+    {
+        printf("%d ", linhaVertical);
 
-        }else{
-
-            printf("%d ", linhaVertical);//pra organizar o numero 10 pra nã deixar o tabuleiro torto
-
+        for(x = 0 ; x <= 4 ; x++)
+        {
+            printf("%d ", tabuleiro[x][y]);
         }
         
-        //tabuleiro em si
-        for(x = 0 ; x < 10 ; x++)
-        {
-
-            tabuleiro[x][y] = 0;
-
-            if((x >= 2 && x <= 4 ) && y < 1){//posição do primeiro navio
-
-                tabuleiro[x][y] = 3;
-
-            }else if((y >= 2 && y <= 4 ) && x < 5){//posição do segundo navio
-
-                if(x < 4){
-
-                    tabuleiro[x][y] = 0;
-
-                }else{
-
-                    tabuleiro[x][y] = 3;
-
-                }
-                
-            }
-            printf("%d ", tabuleiro[x][y]);
-
-        }
         printf("\n");
         linhaVertical++;
     }
@@ -82,6 +58,47 @@ int main() {
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+
+    printf("\n");
+
+    linhaHorizontal = 'A';
+    printf("  ");//basicamente o tab pra dar um espaço inicial para as letras
+
+    for(int i = 1; i <= 10; i++){
+
+        printf("%c ", linhaHorizontal);
+        linhaHorizontal++; //Aqui ira incrementar as letras pra A,B,C...
+
+    }
+    printf("\n");
+
+    // Tabuleiro expandido para 10x10 já iniciado com 0
+    int tabuleiroGrande[10][10] = {0};//deixa todo o tabuleiro com 0
+
+    //coordenadas do navio
+    //                  navio1  navio2    navio3    navio4  
+    int positionX[12] = {0,0,0   ,3,4,5  ,7,6,5     ,4,3,2};
+    int positionY[12] = {0,1,2   ,0,0,0  ,2,3,4     ,2,3,4};
+
+    // Posiciona os 4 navios (horizontal, vertical, diagonal crescente e decrescente)
+    for( int i = 0 ; i <= 11 ; i++){
+        tabuleiroGrande[positionX[i]][positionY[i]] = 3;
+    }
+
+    linhaVertical = 1;
+    
+    for(y = 0 ; y <= 9 ; y++)
+    {
+        printf("%d ", linhaVertical);
+
+        for(x = 0 ; x <= 9 ; x++)
+        {
+            printf("%d ", tabuleiroGrande[x][y]);
+        }
+        
+        printf("\n");
+        linhaVertical++;
+    }
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
