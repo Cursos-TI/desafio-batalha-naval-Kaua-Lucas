@@ -27,7 +27,7 @@ int main() {
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     
-    int tabuleiro[5][5] = {0}, x = 0 , y = 0, navio = 0;
+    int tabuleiro[5][5] = {0}, x = 0 , y = 0;
     
     // Coordenadas dos dois navios (um horizontal e um vertical)
     int positionPequenoX[10] = {2,3,4   ,0,0,0};
@@ -107,16 +107,105 @@ int main() {
 
     // Exemplos de exibição das habilidades:
     // Exemplo para habilidade em cone:
+
+    printf("\n\n");
+
+    // Tabuleiro expandido para 10x10 já iniciado com 0
+    int tabuleiroCone[5][5] = {0};//deixa todo o tabuleiro com 0
+
+    //coordenadas do cone
+    int positionConeX[9] = {2, 1,2,3, 0,1,2,3,4};
+    int positionConeY[9] = {0, 1,1,1, 2,2,2,2,2};
+
+    // Posiciona os 4 navios (horizontal, vertical, diagonal crescente e decrescente)
+    for( int i = 0 ; i <= 8 ; i++){
+        tabuleiroCone[positionConeX[i]][positionConeY[i]] = 1;
+    }
+
+    
+    for(y = 0 ; y <= 4 ; y++)
+    {
+       
+
+        for(x = 0 ; x <= 4 ; x++)
+        {
+            printf("%d ", tabuleiroCone[x][y]);
+        }
+        
+        printf("\n");
+       
+    }
+
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 1 1 1 1 1
     
     // Exemplo para habilidade em octaedro:
+
+    printf("\n\n");
+
+    // Tabuleiro expandido para 10x10 já iniciado com 0
+    int tabuleiroOctaedro[5][5] = {0};//deixa todo o tabuleiro com 0
+
+    //coordenadas do cone
+    int positionOctaedroX[5] = {2, 1,2,3, 2};
+    int positionOctaedroY[5] = {0, 1,1,1, 2};
+
+    // Posiciona os 4 navios (horizontal, vertical, diagonal crescente e decrescente)
+    for( int i = 0 ; i <= 4 ; i++){
+        tabuleiroOctaedro[positionOctaedroX[i]][positionOctaedroY[i]] = 1;
+    }
+
+    
+    for(y = 0 ; y <= 4 ; y++)
+    {
+       
+
+        for(x = 0 ; x <= 4 ; x++)
+        {
+            printf("%d ", tabuleiroOctaedro[x][y]);
+        }
+        
+        printf("\n");
+       
+    }
+
+
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 0 0 1 0 0
 
     // Exemplo para habilidade em cruz:
+
+    printf("\n\n");
+
+    // Tabuleiro expandido para 10x10 já iniciado com 0
+    int tabuleiroCruz[5][5] = {0};//deixa todo o tabuleiro com 0
+
+    //coordenadas do cone
+    int positionCruzX[7] = {0,1,2,3,4, 2, 2};
+    int positionCruzY[7] = {2,2,2,2,2, 1, 3};
+
+    // Posiciona os 4 navios (horizontal, vertical, diagonal crescente e decrescente)
+    for( int i = 0 ; i <= 6 ; i++){
+        tabuleiroCruz[positionCruzX[i]][positionCruzY[i]] = 1;
+    }
+
+    
+    for(y = 0 ; y <= 4 ; y++)
+    {
+       
+
+        for(x = 0 ; x <= 4 ; x++)
+        {
+            printf("%d ", tabuleiroCruz[x][y]);
+        }
+        
+        printf("\n");
+       
+    }
+
+
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
